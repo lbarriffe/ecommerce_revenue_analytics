@@ -1,21 +1,10 @@
-# Olist Dataset Analysis
+# Olist Revenue and Customer Satisfaction
 
 ## Overview
 
 **Business Question:** How concentrated is customer revenue, how much revenue is at risk, and does delivery performance measurably affect customer satisfaction?
 
 **Data Source:** [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
-
-**Important Fields:** 
-
-| Variable      | Description                                             |
-|---------------|---------------------------------------------------------|
-| delivery_days | days between order purchase and order delivery          |
-| order_status  | delivered, unavailable, shipped, approved, and canceled |
-| total_payment | payment received per customer                           |
-| review_score  | satisfaction rating between 1 and 5(highest)            |
-| order_status  | approved, canceled, delivered, unavailable, and shipped |
-| revenue_status| realized, lost, and at risk
 
 ---
 
@@ -25,7 +14,7 @@
 2. Data quality issues included missing payment records, duplicate reviews, and inconsistent delivery timestamps. These were handled with conditional logic and validation flags.
 3. Revenue was defined by aggregating payment values, and invalid or inconsistent records were retained and flagged to preserve flexibility in analysis.
 
-## Core Analysis
+## Analysis
 
 ### **Revenue Leakage**
 
@@ -39,6 +28,8 @@ Revenue leakage appears to be minimal. Assuming the fulfillment trend continues,
 
 ### **Customer Value**
 
+<h3 align="center">Percentage of Revenue x Percentage of Customers</h3>
+
 ![Revenue Curve](revenue_curve.png)
 
 #### Findings
@@ -47,20 +38,25 @@ Customer revenue is moderately concentrated among a subset of users. The cumulat
 
 ### **Operational Impact**
 
+<h3 align="center">Average Review Score x Delivery Lead Time </h3>
+
 ![Delivery Days by Review Score](delivery_days_by_review.png)
 
 #### Findings
 
-Delivery performance shows a measurable relationship with customer satisfaction. Orders with the lowest delivery times tend to receive higher review scores, while review scores generally decline as delivery times increase.
+Delivery performance shows a measurable relationship with customer satisfaction. Orders with the shortest delivery times tend to receive higher review scores, while review scores generally decline as delivery times increase.
 
 #### Summary
 
 Delivery performance appears to be positively associated with customer satisfaction. Although this relationship is not perfectly linear, the weakening of the trend in later delivery periods is likely influenced by increasingly sparse observations.
-### Conclusion and Recommendations
+
+### Conclusion:
 
 1. Revenue loss from canceled or incomplete orders appears to be minimal.
 2. Customer value is moderately concentrated, with approximatley 50% of customers contributing 80% of revenue.
 3. Delivery performance shows a measurable relationship with customer satisfaction.
+
+### Recommendations:
 
 1. Develop retention strategies that target the top 50% of customers.
 2. Improve delivery performance to support stronger customer satisfaction.
